@@ -15,10 +15,14 @@ describe("NFTMarket", async function () {
 
     let listingPrice = await market.getListingPrice();
     listingPrice = listingPrice.toString();
-    const auctionPrice = ethers.utils.parseUnits("1", "ether");
+    const auctionPrice = ethers.utils.parseUnits("100", "ether");
 
-    await nft.createToken("https://i.guim.co.uk/img/media/3c90fbf9666d4e73be1122eb33afed235db41b1f/0_0_5000_3000/master/5000.jpg?width=1200&quality=85&auto=format&fit=max&s=0c4de651644de5fe939d8dbd6b14ba66");
-    await nft.createToken("https://cdn3.f-cdn.com/contestentries/1954354/17253458/60ccd8ba53dc6_thumb900.jpg");
+    await nft.createToken(
+      "https://i.guim.co.uk/img/media/3c90fbf9666d4e73be1122eb33afed235db41b1f/0_0_5000_3000/master/5000.jpg?width=1200&quality=85&auto=format&fit=max&s=0c4de651644de5fe939d8dbd6b14ba66"
+    );
+    await nft.createToken(
+      "https://cdn3.f-cdn.com/contestentries/1954354/17253458/60ccd8ba53dc6_thumb900.jpg"
+    );
 
     await market.createMarketItem(nftContractAddress, 1, auctionPrice, {
       value: listingPrice,
@@ -33,7 +37,21 @@ describe("NFTMarket", async function () {
       .connect(buyerAddress)
       .createMarketSale(nftContractAddress, 1, { value: auctionPrice });
 
-    items = await market.fetchMarketItems();
+    let items = await market.fetchMarketItems();
+
+    items = await Promise.all(
+      items.map(async (item) => {
+        const tokenUri = await nft.tokenURI(item.tokenId);
+        let newItemRefrence = {
+          price: item.price.toString(),
+          tokenId: item.tokenId.toString(),
+          seller: item.seller,
+          owner: item.owner,
+          tokenUri,
+        };
+        return newItemRefrence;
+      })
+    );
 
     console.log("Thos are the items : ", items);
   });
