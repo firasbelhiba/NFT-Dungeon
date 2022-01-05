@@ -14,8 +14,9 @@ function MyApp({ Component, pageProps }) {
                     <img
                       className="header__logo"
                       id="logo_js"
-                      src="assets/img/logos/Logo.svg"
+                      src="assets/img/logos/Dungeon.png"
                       alt="logo"
+                      style={{height : "9.2rem"}}
                     />
                   </a>
                 </Link>
@@ -23,7 +24,7 @@ function MyApp({ Component, pageProps }) {
               <div className="header__menu">
                 <ul className="d-flex space-x-20">
                   <li>
-                    <Link href="/Create">
+                    <Link href="/create-item">
                       <a className="color_black"> Create</a>
                     </Link>
                   </li>

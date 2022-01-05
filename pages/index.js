@@ -8,6 +8,9 @@ import { nftAddress, nftMarketAddress } from "../config";
 import NFT from "../artifacts/contracts/NFT.sol/NFT.json";
 import Market from "../artifacts/contracts/NFTMarket.sol/NFTMarket.json";
 
+// componenets
+import WelcomeBanner from "../components/welcome-banner";
+
 export default function Home() {
   const [nfts, setNfts] = useState([]);
   const [loadingState, setLoadingState] = useState("not-loaded");
@@ -72,36 +75,199 @@ export default function Home() {
     return <h1>No items in the market place </h1>;
 
   return (
-    <div className="flex justify-center">
-      <div className="px-4" style={{ maxWidth: "1600px" }}>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
-          {nfts.map((nft, i) => (
-            <div key={i} className="border shadow rounded-xl overflow-hidden">
-              <img src={nft.image} />
-              <div className="p-4">
-                <p
-                  style={{ height: "64px" }}
-                  className="text-2xl font-semibold"
+    <div>
+      <WelcomeBanner />
+      <div className="mt-100">
+        <div className="container">
+          <div className="section__head">
+            <div
+              className="d-md-flex
+							sm:space-y-20
+							space-x-20
+							justify-content-between
+							align-items-center"
+            >
+              <h2 className="section__title text-center">Explore</h2>
+              <ul className="menu_categories space-x-20">
+                <li>
+                  <a href="#" className="color_brand">
+                    <span> All </span>
+                  </a>
+                </li>
+                <li>
+                  {" "}
+                  <a href="#">
+                    <i className="ri-gamepad-line" /> <span> Games </span>
+                  </a>
+                </li>
+                <li>
+                  {" "}
+                  <a href="#">
+                    <i className="ri-brush-line" /> <span> Art </span>
+                  </a>
+                </li>
+                <li>
+                  {" "}
+                  <a href="#">
+                    <i className="ri-stock-line" /> <span> Trading Cards </span>
+                  </a>
+                </li>
+                <li>
+                  {" "}
+                  <a href="#">
+                    <i className="ri-music-line" /> <span> Music </span>
+                  </a>
+                </li>
+                <li>
+                  {" "}
+                  <a href="#">
+                    <i className="ri-global-line" /> <span> Domain Names </span>
+                  </a>
+                </li>
+                <li>
+                  {" "}
+                  <a href="#">
+                    <i className="ri-emotion-laugh-line" /> <span> Memes </span>
+                  </a>
+                </li>
+                <li>
+                  {" "}
+                  <a href="#">
+                    <i className="ri-layout-4-line" />{" "}
+                    <span> Collectibles </span>
+                  </a>
+                </li>
+              </ul>{" "}
+              <div className="dropdown text-center">
+                <button
+                  className="btn btn-white btn-sm dropdown-toggle"
+                  type="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
                 >
-                  {nft.name}
-                </p>
-                <div style={{ height: "70px", overflow: "hidden" }}>
-                  <p className="text-gray-400">{nft.description}</p>
+                  Recent Active
+                </button>
+                <div className="dropdown-menu">
+                  <a className="dropdown-item" href="#">
+                    Action
+                  </a>
+                  <a className="dropdown-item" href="#">
+                    Another action
+                  </a>
+                  <a className="dropdown-item" href="#">
+                    Something else here
+                  </a>
                 </div>
               </div>
-              <div className="p-4 bg-black">
-                <p className="text-2xl mb-4 font-bold text-white">
-                  {nft.price} ETH
-                </p>
-                <button
-                  className="w-full bg-pink-500 text-white font-bold py-2 px-12 rounded"
-                  onClick={() => buyNft(nft)}
-                >
-                  Buy
-                </button>
-              </div>
             </div>
-          ))}
+          </div>
+          <div className="row">
+            {nfts.map((nft, i) => (
+              <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                <div className="card__item four">
+                  <div className="card_body space-y-10">
+                    {/* =============== */}
+                    <div className="creators space-x-10">
+                      <div className="avatars space-x-3">
+                        <a href="Profile.html">
+                          <img
+                            src={nft.image}
+                            alt="Avatar"
+                            className="avatar avatar-sm"
+                          />
+                        </a>
+                        <a href="Profile.html">
+                          <p className="avatars_name txt_xs">@mickel_fenn</p>
+                        </a>
+                      </div>
+                      <div className="avatars space-x-3">
+                        <a href="Profile.html">
+                          <img
+                            src="assets/img/avatars/avatar_2.png"
+                            alt="Avatar"
+                            className="avatar avatar-sm"
+                          />
+                        </a>
+                        <a href="Profile.html">
+                          <p className="avatars_name txt_xs">@danil_pannini</p>
+                        </a>
+                      </div>
+                    </div>
+                    <div className="card_head">
+                      <a href="Item-details.html">
+                        <img
+                          src={nft.image}
+                          alt="item
+                     img"
+                        />
+                      </a>
+                      <a href="#" className="likes space-x-3">
+                        <i className="ri-heart-3-fill" />
+                        <span className="txt_sm">1.2k</span>
+                      </a>
+                    </div>
+                    {/* =============== */}
+                    <h6 className="card_title">
+                      <a className="color_black" href="Item-details.html">
+                        {nft.name}
+                      </a>
+                    </h6>
+                    <div className="card_footer d-block space-y-10">
+                      <div className="card_footer justify-content-between">
+                        <div className="creators">
+                          <p className="txt_sm">{nft.description}</p>
+                        </div>
+                        <a href="#" className>
+                          <p className="txt_sm">
+                            Price:{" "}
+                            <span className="color_green txt_sm">
+                              {nft.price} ETH
+                            </span>
+                          </p>
+                        </a>
+                      </div>
+                      <div className="hr" />
+                      <div
+                        className="d-flex
+                   align-items-center
+                   space-x-10
+                   justify-content-between"
+                      >
+                        <div
+                          className="d-flex align-items-center
+                     space-x-5"
+                        >
+                          <i className="ri-history-line" />
+                          <a
+                            href="#"
+                            data-toggle="modal"
+                            data-target="#popup_history"
+                          >
+                            <p
+                              className="color_text txt_sm
+                         view_history"
+                              style={{ width: "auto" }}
+                            >
+                              View History
+                            </p>
+                          </a>
+                        </div>
+                        <a
+                          className="btn btn-sm btn-primary"
+                          onClick={() => buyNft(nft)}
+                          data-toggle="modal"
+                          data-target="#popup_bid"
+                        >
+                          Buy NFT
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
