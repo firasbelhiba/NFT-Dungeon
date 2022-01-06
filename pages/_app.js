@@ -1,5 +1,6 @@
 import "../styles/globals.css";
 import Link from "next/link";
+import Script from "next/script";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -16,7 +17,7 @@ function MyApp({ Component, pageProps }) {
                       id="logo_js"
                       src="assets/img/logos/Dungeon.png"
                       alt="logo"
-                      style={{height : "9.2rem"}}
+                      style={{ height: "9.2rem" }}
                     />
                   </a>
                 </Link>
@@ -110,17 +111,17 @@ function MyApp({ Component, pageProps }) {
         </header>
       </div>
       <Component {...pageProps} />
-      <script src="assets/js/jquery-3.6.0.js"></script>
-      <script src="assets/js/bootstrap.bundle.min.js"></script>
-      <script src="assets/js/swiper-bundle.min.js"></script>
-      <script src="assets/js/gsap.min.js"></script>
-      <script src="assets/js/ScrollTrigger.min.js"></script>
-      <script src="assets/js/sticky-sidebar.js"></script>
-      <script src="assets/js/script.js"></script>
-      <script src="../cdn.jsdelivr.net/npm/web3%40latest/dist/web3.min.js"></script>
-      <script src="../unpkg.com/moralis%400.0.178/dist/moralis.js"></script>
-      <script src="assets/js/nft.js"></script>
-      <script src="../unpkg.com/%40lottiefiles/lottie-player%401.5.4/dist/lottie-player.js"></script>
+      <Script src="assets/js/jquery-3.6.0.js" />
+      <Script src="assets/js/bootstrap.bundle.min.js" />
+      <Script src="assets/js/swiper-bundle.min.js" />
+      <Script src="assets/js/gsap.min.js" />
+      <Script src="assets/js/ScrollTrigger.min.js" />
+      <Script src="assets/js/sticky-sidebar.js" />
+      <Script src="assets/js/script.js" />
+      <Script src="../cdn.jsdelivr.net/npm/web3%40latest/dist/web3.min.js" />
+      <Script src="../unpkg.com/moralis%400.0.178/dist/moralis.js" />
+      <Script src="assets/js/nft.js" />
+      <Script src="../unpkg.com/%40lottiefiles/lottie-player%401.5.4/dist/lottie-player.js" />
     </div>
   );
 }
