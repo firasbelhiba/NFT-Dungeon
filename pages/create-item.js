@@ -13,7 +13,6 @@ import Market from "../artifacts/contracts/NFTMarket.sol/NFTMarket.json";
 
 export default function CreateItem() {
   const [fileUrl, setFileUrl] = useState("assets/img/icons/upload.svg");
-  const [listingPrice, setListingPrice] = "";
   const [formInput, updateFormInput] = useState({
     price: "",
     name: "",
@@ -72,7 +71,6 @@ export default function CreateItem() {
     contract = new ethers.Contract(nftMarketAddress, Market.abi, signer);
     let listingPrice = await contract.getListingPrice();
     listingPrice = listingPrice.toString();
-    setListingPrice(listingPrice);
 
     transaction = await contract.createMarketItem(nftAddress, tokenId, price, {
       value: listingPrice,
@@ -104,6 +102,14 @@ export default function CreateItem() {
                   <p className="color_text">
                     PNG, GIF, WEBP, MP4 or MP3. Max 100mb.
                   </p>
+                </div>
+                <div className="space-y-20">
+                  <p className="color_text">or choose a file</p>
+                  <a href="#" className="btn btn-white">
+                    {" "}
+                    Browse files{" "}
+                  </a>
+                  <input type="file" onChange={onChange} />
                 </div>
               </div>
             </div>
