@@ -166,7 +166,10 @@ export default function Home() {
           </div>
           <div className="row">
             {nfts.map((nft, i) => (
-              <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+              <div
+                key={nft.tokenId}
+                className="col-xl-3 col-lg-4 col-md-6 col-sm-6"
+              >
                 <div className="card__item four">
                   <div className="card_body space-y-10">
                     {/* =============== */}

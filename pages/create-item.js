@@ -82,10 +82,10 @@ export default function CreateItem() {
 
   return (
     <div>
-      <div class="hero__upload">
-        <div class="container">
-          <div class="space-y-20">
-            <h2 class="title">Create single collectible</h2>
+      <div className="hero__upload">
+        <div className="container">
+          <div className="space-y-20">
+            <h2 className="title">Create single collectible</h2>
           </div>
         </div>
       </div>
